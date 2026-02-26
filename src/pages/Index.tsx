@@ -2,7 +2,7 @@ import { useState, useCallback } from "react";
 import { useCustomers } from "@/hooks/useCustomers";
 import { Customer, CampaignRecord } from "@/types/customer";
 import StatsCards from "@/components/Dashboard/StatsCards";
-import CustomersTable from "@/components/Dashboard/CustomersTable";
+
 import AliveCustomers from "@/components/Dashboard/AliveCustomers";
 import DeadCustomers from "@/components/Dashboard/DeadCustomers";
 import CampaignModal from "@/components/Dashboard/CampaignModal";
@@ -143,8 +143,6 @@ const Index = () => {
           <AliveCustomers customers={customers} />
           <DeadCustomers customers={customers} />
         </div>
-
-        <CustomersTable customers={customers} />
 
         <CampaignHistory campaigns={campaigns} />
 
