@@ -1,6 +1,8 @@
-import { Customer } from "@/types/customer";
+import { useState, useEffect } from "react";
+import { Customer, MESSAGE_TEMPLATES } from "@/types/customer";
 import { generateWhatsAppLink, buildMessage } from "@/lib/whatsapp";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 import { ExternalLink, Check, SkipForward, XCircle, Crown, User } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 
@@ -26,10 +28,18 @@ export default function OperatorMode({
   onEnd,
 }: OperatorModeProps) {
   const customer = customers[currentIndex];
+
+  const [editedMessage, setEditedMessage] = useState("");
+
+  useEffect(() => {
+    if (!customer) return;
+    const template = MESSAGE_TEMPLATES[customer.segment] || message;
+    setEditedMessage(buildMessage(template, customer.customer_name));
+  }, [currentIndex, customer?.segment, customer?.customer_name, message]);
+
   if (!customer) return null;
 
-  const finalMessage = buildMessage(message, customer.customer_name);
-  const waLink = generateWhatsAppLink(customer.phone, finalMessage);
+  const waLink = generateWhatsAppLink(customer.phone, editedMessage);
   const total = customers.length;
   const processed = sentCount + skippedCount;
   const remaining = total - processed;
@@ -100,8 +110,12 @@ export default function OperatorMode({
           </div>
 
           <div className="rounded-lg bg-background/50 p-3">
-            <p className="mb-1 text-xs text-muted-foreground">Message Preview</p>
-            <p className="whitespace-pre-line text-sm">{finalMessage}</p>
+            <p className="mb-1 text-xs text-muted-foreground">Message Preview (click to edit)</p>
+            <Textarea
+              value={editedMessage}
+              onChange={(e) => setEditedMessage(e.target.value)}
+              className="min-h-[100px] resize-none border-none bg-transparent p-0 text-sm focus-visible:ring-0 focus-visible:ring-offset-0"
+            />
           </div>
         </div>
 
