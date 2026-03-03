@@ -10,6 +10,7 @@ import OperatorMode from "@/components/Dashboard/OperatorMode";
 import CampaignHistory from "@/components/Dashboard/CampaignHistory";
 import { Button } from "@/components/ui/button";
 import { Rocket, Loader2, RefreshCw } from "lucide-react";
+import ishLogo from "@/assets/ish-logo.jpg";
 
 const Index = () => {
   const { data: customers = [], isLoading, error, refetch } = useCustomers();
@@ -99,13 +100,20 @@ const Index = () => {
       <div className="mx-auto max-w-7xl space-y-6">
         {/* Header */}
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
-              Agency Marketing Campaign Dashboard
-            </h1>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Lifecycle automation • Smart WhatsApp campaigns
-            </p>
+          <div className="flex items-center gap-4">
+            <img
+              src={ishLogo}
+              alt="ISH Legacy"
+              className="h-11 w-auto rounded-lg object-contain"
+            />
+            <div>
+              <h1 className="font-display text-2xl font-semibold tracking-wide sm:text-3xl">
+                Campaign Dashboard
+              </h1>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Lifecycle automation · Smart WhatsApp campaigns
+              </p>
+            </div>
           </div>
           <div className="flex gap-3">
             <Button variant="outline" size="sm" onClick={() => refetch()} className="gap-1.5">
@@ -116,7 +124,7 @@ const Index = () => {
               size="sm"
               onClick={() => setShowModal(true)}
               disabled={campaignActive}
-              className="gap-1.5 bg-primary text-primary-foreground hover:bg-primary/90"
+              className="gap-1.5"
             >
               <Rocket className="h-3.5 w-3.5" />
               Start Smart Queue

@@ -14,7 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
+        sans: ["Questrial", "sans-serif"],
+        display: ["Cormorant Garamond", "serif"],
+        heading: ["Tenor Sans", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -90,8 +92,8 @@ export default {
           to: { height: "0" },
         },
         "pulse-green": {
-          "0%, 100%": { boxShadow: "0 0 0 0 hsl(152 60% 48% / 0.4)" },
-          "50%": { boxShadow: "0 0 0 8px hsl(152 60% 48% / 0)" },
+          "0%, 100%": { boxShadow: "0 0 0 0 hsl(155 26% 48% / 0.3)" },
+          "50%": { boxShadow: "0 0 0 8px hsl(155 26% 48% / 0)" },
         },
       },
       animation: {
