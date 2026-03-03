@@ -2,65 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Tenor+Sans&family=Questrial&display=swap');
 
 @layer base {
   :root {
-    --background: 220 20% 7%;
-    --foreground: 210 20% 92%;
+    --background: 94 38% 91%;
+    --foreground: 150 47% 11%;
 
-    --card: 220 18% 10%;
-    --card-foreground: 210 20% 92%;
+    --card: 90 30% 96%;
+    --card-foreground: 150 47% 11%;
 
-    --popover: 220 18% 12%;
-    --popover-foreground: 210 20% 92%;
+    --popover: 90 30% 96%;
+    --popover-foreground: 150 47% 11%;
 
-    --primary: 152 60% 48%;
-    --primary-foreground: 220 20% 7%;
+    --primary: 155 26% 48%;
+    --primary-foreground: 94 38% 95%;
 
-    --secondary: 220 16% 16%;
-    --secondary-foreground: 210 20% 82%;
+    --secondary: 126 16% 83%;
+    --secondary-foreground: 150 47% 11%;
 
-    --muted: 220 14% 14%;
-    --muted-foreground: 215 12% 52%;
+    --muted: 126 16% 86%;
+    --muted-foreground: 150 20% 38%;
 
-    --accent: 220 16% 18%;
-    --accent-foreground: 210 20% 90%;
+    --accent: 126 16% 78%;
+    --accent-foreground: 150 47% 11%;
 
-    --destructive: 0 72% 55%;
+    --destructive: 0 55% 48%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 14% 16%;
-    --input: 220 14% 18%;
-    --ring: 152 60% 48%;
+    --border: 126 14% 76%;
+    --input: 126 14% 80%;
+    --ring: 155 26% 48%;
 
     --radius: 0.75rem;
 
-    --alive: 152 60% 48%;
-    --alive-foreground: 152 80% 12%;
-    --alive-muted: 152 40% 14%;
+    --alive: 152 30% 42%;
+    --alive-foreground: 94 38% 95%;
+    --alive-muted: 126 16% 86%;
 
-    --dead: 0 72% 55%;
-    --dead-foreground: 0 80% 12%;
-    --dead-muted: 0 40% 14%;
+    --dead: 0 45% 50%;
+    --dead-foreground: 0 0% 100%;
+    --dead-muted: 0 20% 90%;
 
-    --vip: 45 90% 55%;
-    --vip-foreground: 45 90% 12%;
+    --vip: 40 50% 45%;
+    --vip-foreground: 40 60% 12%;
 
-    --chart-1: 152 60% 48%;
-    --chart-2: 0 72% 55%;
-    --chart-3: 45 90% 55%;
-    --chart-4: 200 70% 55%;
-    --chart-5: 280 60% 55%;
+    --chart-1: 155 26% 48%;
+    --chart-2: 0 45% 50%;
+    --chart-3: 40 50% 45%;
+    --chart-4: 152 30% 42%;
+    --chart-5: 161 33% 28%;
 
-    --sidebar-background: 220 18% 8%;
-    --sidebar-foreground: 210 20% 82%;
-    --sidebar-primary: 152 60% 48%;
-    --sidebar-primary-foreground: 220 20% 7%;
-    --sidebar-accent: 220 16% 14%;
-    --sidebar-accent-foreground: 210 20% 90%;
-    --sidebar-border: 220 14% 16%;
-    --sidebar-ring: 152 60% 48%;
+    --sidebar-background: 90 30% 94%;
+    --sidebar-foreground: 150 47% 11%;
+    --sidebar-primary: 155 26% 48%;
+    --sidebar-primary-foreground: 94 38% 95%;
+    --sidebar-accent: 126 16% 83%;
+    --sidebar-accent-foreground: 150 47% 11%;
+    --sidebar-border: 126 14% 76%;
+    --sidebar-ring: 155 26% 48%;
   }
 }
 
@@ -70,25 +70,43 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Inter', sans-serif;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Questrial', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Tenor Sans', sans-serif;
+    letter-spacing: 0.02em;
   }
 }
 
 @layer utilities {
   .glass-card {
-    @apply bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl;
+    @apply bg-card border border-border/60 rounded-xl;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
   }
 
   .glow-green {
-    box-shadow: 0 0 20px hsl(152 60% 48% / 0.15);
+    box-shadow: 0 8px 24px hsl(152 30% 42% / 0.08);
   }
 
   .glow-red {
-    box-shadow: 0 0 20px hsl(0 72% 55% / 0.15);
+    box-shadow: 0 8px 24px hsl(0 45% 50% / 0.08);
   }
 
   .stat-card {
-    @apply glass-card p-5 transition-all duration-300 hover:border-primary/30;
+    @apply glass-card p-5 transition-all duration-300 hover:border-primary/40;
+  }
+
+  .font-display {
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .font-heading {
+    font-family: 'Tenor Sans', sans-serif;
+  }
+
+  .font-body {
+    font-family: 'Questrial', sans-serif;
   }
 }
