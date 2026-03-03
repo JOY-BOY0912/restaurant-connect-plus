@@ -6,61 +6,64 @@
 
 @layer base {
   :root {
-    --background: 94 38% 91%;
-    --foreground: 150 47% 11%;
+    --background: 90 25% 93%;
+    --foreground: 160 35% 12%;
 
-    --card: 90 30% 96%;
-    --card-foreground: 150 47% 11%;
+    --card: 90 20% 97%;
+    --card-foreground: 160 35% 12%;
 
-    --popover: 90 30% 96%;
-    --popover-foreground: 150 47% 11%;
+    --popover: 90 20% 97%;
+    --popover-foreground: 160 35% 12%;
 
-    --primary: 155 26% 48%;
-    --primary-foreground: 94 38% 95%;
+    --primary: 155 30% 42%;
+    --primary-foreground: 90 30% 96%;
 
-    --secondary: 126 16% 83%;
-    --secondary-foreground: 150 47% 11%;
+    --secondary: 120 14% 88%;
+    --secondary-foreground: 160 35% 12%;
 
-    --muted: 126 16% 86%;
-    --muted-foreground: 150 20% 38%;
+    --muted: 120 12% 90%;
+    --muted-foreground: 155 15% 42%;
 
-    --accent: 126 16% 78%;
-    --accent-foreground: 150 47% 11%;
+    --accent: 120 14% 84%;
+    --accent-foreground: 160 35% 12%;
 
-    --destructive: 0 55% 48%;
+    --destructive: 0 50% 45%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 126 14% 76%;
-    --input: 126 14% 80%;
-    --ring: 155 26% 48%;
+    --border: 130 10% 82%;
+    --input: 130 10% 84%;
+    --ring: 155 30% 42%;
 
-    --radius: 0.75rem;
+    --radius: 0.875rem;
 
-    --alive: 152 30% 42%;
-    --alive-foreground: 94 38% 95%;
-    --alive-muted: 126 16% 86%;
+    --alive: 152 35% 38%;
+    --alive-foreground: 90 30% 96%;
+    --alive-muted: 130 16% 90%;
 
-    --dead: 0 45% 50%;
+    --dead: 0 40% 48%;
     --dead-foreground: 0 0% 100%;
-    --dead-muted: 0 20% 90%;
+    --dead-muted: 0 15% 92%;
 
-    --vip: 40 50% 45%;
-    --vip-foreground: 40 60% 12%;
+    --vip: 38 45% 42%;
+    --vip-foreground: 38 50% 12%;
 
-    --chart-1: 155 26% 48%;
-    --chart-2: 0 45% 50%;
-    --chart-3: 40 50% 45%;
-    --chart-4: 152 30% 42%;
-    --chart-5: 161 33% 28%;
+    --chart-1: 155 30% 42%;
+    --chart-2: 0 40% 48%;
+    --chart-3: 38 45% 42%;
+    --chart-4: 152 35% 38%;
+    --chart-5: 161 38% 25%;
 
-    --sidebar-background: 90 30% 94%;
-    --sidebar-foreground: 150 47% 11%;
-    --sidebar-primary: 155 26% 48%;
-    --sidebar-primary-foreground: 94 38% 95%;
-    --sidebar-accent: 126 16% 83%;
-    --sidebar-accent-foreground: 150 47% 11%;
-    --sidebar-border: 126 14% 76%;
-    --sidebar-ring: 155 26% 48%;
+    --sidebar-background: 90 20% 95%;
+    --sidebar-foreground: 160 35% 12%;
+    --sidebar-primary: 155 30% 42%;
+    --sidebar-primary-foreground: 90 30% 96%;
+    --sidebar-accent: 120 14% 88%;
+    --sidebar-accent-foreground: 160 35% 12%;
+    --sidebar-border: 130 10% 82%;
+    --sidebar-ring: 155 30% 42%;
+
+    --navbar-from: 160 32% 38%;
+    --navbar-to: 155 28% 48%;
   }
 }
 
@@ -72,30 +75,37 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Questrial', sans-serif;
+    color: hsl(160 35% 18%);
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Tenor Sans', sans-serif;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.03em;
   }
 }
 
 @layer utilities {
   .glass-card {
-    @apply bg-card border border-border/60 rounded-xl;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    @apply bg-card rounded-2xl;
+    border: 1px solid hsl(130 10% 85% / 0.6);
+    box-shadow: 0 10px 30px rgba(47, 94, 84, 0.06);
   }
 
   .glow-green {
-    box-shadow: 0 8px 24px hsl(152 30% 42% / 0.08);
+    box-shadow: 0 10px 30px rgba(47, 94, 84, 0.08);
   }
 
   .glow-red {
-    box-shadow: 0 8px 24px hsl(0 45% 50% / 0.08);
+    box-shadow: 0 10px 30px rgba(180, 60, 60, 0.06);
   }
 
   .stat-card {
-    @apply glass-card p-5 transition-all duration-300 hover:border-primary/40;
+    @apply glass-card p-6 transition-all duration-300;
+  }
+
+  .stat-card:hover {
+    box-shadow: 0 14px 36px rgba(47, 94, 84, 0.1);
+    border-color: hsl(155 30% 42% / 0.3);
   }
 
   .font-display {
@@ -108,5 +118,29 @@
 
   .font-body {
     font-family: 'Questrial', sans-serif;
+  }
+
+  .navbar-gradient {
+    background: linear-gradient(135deg, hsl(160 35% 35%), hsl(155 30% 45%));
+  }
+
+  .brand-table th {
+    @apply px-5 py-3.5 text-xs font-medium uppercase tracking-wider;
+    font-family: 'Questrial', sans-serif;
+    letter-spacing: 0.06em;
+    color: hsl(155 15% 42%);
+    background: hsl(120 14% 94%);
+  }
+
+  .brand-table td {
+    @apply px-5 py-3.5;
+  }
+
+  .brand-table tbody tr {
+    transition: background-color 0.2s ease;
+  }
+
+  .brand-table tbody tr:hover {
+    background: hsl(120 14% 94% / 0.5);
   }
 }

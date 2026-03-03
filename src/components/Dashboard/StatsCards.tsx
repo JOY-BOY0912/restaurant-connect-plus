@@ -9,18 +9,17 @@ interface StatCardProps {
   label: string;
   value: number;
   icon: React.ReactNode;
-  accent?: string;
 }
 
-function StatCard({ label, value, icon, accent }: StatCardProps) {
+function StatCard({ label, value, icon }: StatCardProps) {
   return (
-    <div className={`stat-card flex items-center gap-4 ${accent || ""}`}>
-      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-secondary">
+    <div className="stat-card flex items-center gap-4">
+      <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10">
         {icon}
       </div>
       <div>
-        <p className="text-sm text-muted-foreground">{label}</p>
-        <p className="text-2xl font-bold">{value}</p>
+        <p className="text-xs font-body text-muted-foreground tracking-wide uppercase">{label}</p>
+        <p className="text-2xl font-display font-semibold tracking-tight mt-0.5">{value}</p>
       </div>
     </div>
   );
@@ -32,11 +31,11 @@ export default function StatsCards({ customers }: StatsCardsProps) {
   const sleeping = customers.filter((c) => c.segment === "Sleeping").length;
 
   return (
-    <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+    <div className="grid grid-cols-2 gap-5 md:grid-cols-4">
       <StatCard
         label="Total Customers"
         value={customers.length}
-        icon={<Users className="h-5 w-5 text-foreground" />}
+        icon={<Users className="h-5 w-5 text-primary" />}
       />
       <StatCard
         label="VIP"
