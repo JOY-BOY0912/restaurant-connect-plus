@@ -96,27 +96,32 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background px-4 py-6 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl space-y-6">
-        {/* Header */}
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div className="flex items-center gap-4">
+    <div className="min-h-screen bg-background">
+      {/* Navbar */}
+      <nav className="navbar-gradient px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl items-center justify-between py-3.5">
+          <div className="flex items-center gap-3.5">
             <img
               src={ishLogo}
               alt="ISH Legacy"
-              className="h-11 w-auto rounded-lg object-contain"
+              className="h-10 w-auto rounded-lg object-contain"
             />
             <div>
-              <h1 className="font-display text-2xl font-semibold tracking-wide sm:text-3xl">
+              <h1 className="font-display text-xl font-semibold tracking-wide text-white sm:text-2xl">
                 Campaign Dashboard
               </h1>
-              <p className="mt-1 text-sm text-muted-foreground">
+              <p className="text-xs text-white/70 font-body">
                 Lifecycle automation · Smart WhatsApp campaigns
               </p>
             </div>
           </div>
-          <div className="flex gap-3">
-            <Button variant="outline" size="sm" onClick={() => refetch()} className="gap-1.5">
+          <div className="flex gap-2.5">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => refetch()}
+              className="gap-1.5 border-white/25 bg-white/10 text-white hover:bg-white/20 hover:text-white transition-all duration-300"
+            >
               <RefreshCw className="h-3.5 w-3.5" />
               Refresh
             </Button>
@@ -124,43 +129,48 @@ const Index = () => {
               size="sm"
               onClick={() => setShowModal(true)}
               disabled={campaignActive}
-              className="gap-1.5"
+              className="gap-1.5 bg-white text-primary hover:bg-white/90 transition-all duration-300 shadow-sm"
             >
               <Rocket className="h-3.5 w-3.5" />
               Start Smart Queue
             </Button>
           </div>
         </div>
+      </nav>
 
-        <StatsCards customers={customers} />
+      {/* Content */}
+      <div className="px-4 py-8 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl space-y-8">
+          <StatsCards customers={customers} />
 
-        {campaignActive && (
-          <OperatorMode
-            customers={campaignCustomers}
-            currentIndex={currentIndex}
-            message={campaignMessage}
-            sentCount={sentCount}
-            skippedCount={skippedCount}
-            onMarkSent={handleMarkSent}
-            onSkip={handleSkip}
-            onEnd={handleEnd}
-          />
-        )}
+          {campaignActive && (
+            <OperatorMode
+              customers={campaignCustomers}
+              currentIndex={currentIndex}
+              message={campaignMessage}
+              sentCount={sentCount}
+              skippedCount={skippedCount}
+              onMarkSent={handleMarkSent}
+              onSkip={handleSkip}
+              onEnd={handleEnd}
+            />
+          )}
 
-        <div className="grid gap-6 lg:grid-cols-2">
-          <AliveCustomers customers={customers} />
-          <DeadCustomers customers={customers} />
+          <div className="grid gap-8 lg:grid-cols-2">
+            <AliveCustomers customers={customers} />
+            <DeadCustomers customers={customers} />
+          </div>
+
+          <CampaignHistory campaigns={campaigns} />
+
+          {showModal && (
+            <CampaignModal
+              customers={customers}
+              onStart={handleStartCampaign}
+              onClose={() => setShowModal(false)}
+            />
+          )}
         </div>
-
-        <CampaignHistory campaigns={campaigns} />
-
-        {showModal && (
-          <CampaignModal
-            customers={customers}
-            onStart={handleStartCampaign}
-            onClose={() => setShowModal(false)}
-          />
-        )}
       </div>
     </div>
   );

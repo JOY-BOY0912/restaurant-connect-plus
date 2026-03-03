@@ -1,5 +1,4 @@
 import { CampaignRecord } from "@/types/customer";
-import { Badge } from "@/components/ui/badge";
 
 interface CampaignHistoryProps {
   campaigns: CampaignRecord[];
@@ -10,37 +9,37 @@ export default function CampaignHistory({ campaigns }: CampaignHistoryProps) {
 
   return (
     <div className="glass-card overflow-hidden">
-      <div className="border-b border-border/50 p-5">
-        <h2 className="text-lg font-semibold">Campaign History</h2>
+      <div className="border-b border-border/40 px-6 py-4">
+        <h2 className="text-base font-heading tracking-wide">Campaign History</h2>
       </div>
       <div className="overflow-x-auto">
-        <table className="w-full text-sm">
+        <table className="brand-table w-full text-sm font-body">
           <thead>
-            <tr className="border-b border-border/50 text-left text-muted-foreground">
-              <th className="px-5 py-3 font-medium">Campaign</th>
-              <th className="px-5 py-3 font-medium">Date</th>
-              <th className="px-5 py-3 font-medium">Sent</th>
-              <th className="px-5 py-3 font-medium">Skipped</th>
-              <th className="px-5 py-3 font-medium">Status</th>
+            <tr className="border-b border-border/30 text-left">
+              <th>Campaign</th>
+              <th>Date</th>
+              <th>Sent</th>
+              <th>Skipped</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
             {campaigns.map((c, i) => (
-              <tr key={i} className="border-b border-border/30">
-                <td className="px-5 py-3 font-medium">{c.campaignName}</td>
-                <td className="px-5 py-3 text-muted-foreground">
+              <tr key={i} className="border-b border-border/15">
+                <td className="font-medium">{c.campaignName}</td>
+                <td className="text-muted-foreground">
                   {new Date(c.startedAt).toLocaleString()}
                 </td>
-                <td className="px-5 py-3 text-alive">{c.sentCount}</td>
-                <td className="px-5 py-3 text-vip">{c.skippedCount}</td>
-                <td className="px-5 py-3">
+                <td className="text-alive">{c.sentCount}</td>
+                <td className="text-vip">{c.skippedCount}</td>
+                <td>
                   <span
                     className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${
                       c.status === "completed"
-                        ? "bg-alive/20 text-alive"
+                        ? "bg-alive/12 text-alive"
                         : c.status === "cancelled"
-                        ? "bg-dead/20 text-dead"
-                        : "bg-primary/20 text-primary"
+                        ? "bg-dead/12 text-dead"
+                        : "bg-primary/12 text-primary"
                     }`}
                   >
                     {c.status}

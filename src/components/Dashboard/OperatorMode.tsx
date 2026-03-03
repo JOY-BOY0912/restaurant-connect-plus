@@ -46,43 +46,43 @@ export default function OperatorMode({
   const progress = (processed / total) * 100;
 
   return (
-    <div className="glass-card overflow-hidden border-primary/20">
-      <div className="border-b border-border/50 p-5">
+    <div className="glass-card overflow-hidden">
+      <div className="border-b border-border/40 px-6 py-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-lg font-bold">Operator Assist Mode</h2>
-          <span className="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary animate-pulse-green">
+          <h2 className="text-base font-heading tracking-wide">Operator Assist Mode</h2>
+          <span className="rounded-full bg-primary/15 px-3 py-1 text-xs font-medium text-primary animate-pulse-green">
             LIVE
           </span>
         </div>
       </div>
 
       {/* Analytics Bar */}
-      <div className="grid grid-cols-4 gap-4 border-b border-border/50 p-5">
+      <div className="grid grid-cols-4 gap-4 border-b border-border/40 px-6 py-5">
         <div className="text-center">
-          <p className="text-2xl font-bold">{total}</p>
-          <p className="text-xs text-muted-foreground">Total</p>
+          <p className="text-2xl font-display font-semibold">{total}</p>
+          <p className="text-xs text-muted-foreground font-body mt-0.5">Total</p>
         </div>
         <div className="text-center">
-          <p className="text-2xl font-bold text-alive">{sentCount}</p>
-          <p className="text-xs text-muted-foreground">Sent</p>
+          <p className="text-2xl font-display font-semibold text-alive">{sentCount}</p>
+          <p className="text-xs text-muted-foreground font-body mt-0.5">Sent</p>
         </div>
         <div className="text-center">
-          <p className="text-2xl font-bold text-vip">{skippedCount}</p>
-          <p className="text-xs text-muted-foreground">Skipped</p>
+          <p className="text-2xl font-display font-semibold text-vip">{skippedCount}</p>
+          <p className="text-xs text-muted-foreground font-body mt-0.5">Skipped</p>
         </div>
         <div className="text-center">
-          <p className="text-2xl font-bold">{remaining}</p>
-          <p className="text-xs text-muted-foreground">Remaining</p>
+          <p className="text-2xl font-display font-semibold">{remaining}</p>
+          <p className="text-xs text-muted-foreground font-body mt-0.5">Remaining</p>
         </div>
       </div>
 
-      <div className="p-5">
-        <Progress value={progress} className="mb-5 h-2" />
+      <div className="p-6">
+        <Progress value={progress} className="mb-6 h-1.5" />
 
         {/* Customer Card */}
-        <div className="mb-5 rounded-xl border border-border bg-secondary/50 p-5">
+        <div className="mb-6 rounded-xl border border-border/40 bg-secondary/40 p-5">
           <div className="mb-3 flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/20">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
               {customer.segment === "VIP" ? (
                 <Crown className="h-5 w-5 text-vip" />
               ) : (
@@ -90,15 +90,15 @@ export default function OperatorMode({
               )}
             </div>
             <div>
-              <p className="font-semibold">{customer.customer_name}</p>
-              <p className="text-sm text-muted-foreground">{customer.phone}</p>
+              <p className="font-heading text-sm tracking-wide">{customer.customer_name}</p>
+              <p className="text-xs text-muted-foreground font-body">{customer.phone}</p>
             </div>
-            <span className="ml-auto rounded-full border border-border bg-secondary px-2.5 py-0.5 text-xs font-medium">
+            <span className="ml-auto rounded-full border border-border/50 bg-card px-2.5 py-0.5 text-xs font-medium font-body">
               {customer.segment}
             </span>
           </div>
 
-          <div className="mb-3 grid grid-cols-2 gap-3 text-sm">
+          <div className="mb-4 grid grid-cols-2 gap-3 text-sm font-body">
             <div>
               <span className="text-muted-foreground">Last Visit: </span>
               {new Date(customer.last_order_date).toLocaleDateString()}
@@ -109,12 +109,12 @@ export default function OperatorMode({
             </div>
           </div>
 
-          <div className="rounded-lg bg-background/50 p-3">
-            <p className="mb-1 text-xs text-muted-foreground">Message Preview (click to edit)</p>
+          <div className="rounded-xl bg-card p-4">
+            <p className="mb-2 text-xs text-muted-foreground font-body tracking-wide uppercase">Message Preview</p>
             <Textarea
               value={editedMessage}
               onChange={(e) => setEditedMessage(e.target.value)}
-              className="min-h-[100px] resize-none border-none bg-transparent p-0 text-sm focus-visible:ring-0 focus-visible:ring-offset-0"
+              className="min-h-[100px] resize-none border-none bg-transparent p-0 text-sm font-body focus-visible:ring-0 focus-visible:ring-offset-0"
             />
           </div>
         </div>
@@ -123,14 +123,14 @@ export default function OperatorMode({
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
           <Button
             onClick={() => window.open(waLink, "_blank")}
-            className="h-14 gap-2 bg-alive text-alive-foreground hover:bg-alive/90 text-base font-semibold"
+            className="h-14 gap-2 bg-alive text-alive-foreground hover:bg-alive/90 text-sm font-heading tracking-wide transition-all duration-300"
           >
             <ExternalLink className="h-5 w-5" />
             OPEN WA
           </Button>
           <Button
             onClick={onMarkSent}
-            className="h-14 gap-2 bg-primary text-primary-foreground hover:bg-primary/90 text-base font-semibold"
+            className="h-14 gap-2 bg-primary text-primary-foreground hover:bg-primary/90 text-sm font-heading tracking-wide transition-all duration-300"
           >
             <Check className="h-5 w-5" />
             MARK SENT
@@ -138,7 +138,7 @@ export default function OperatorMode({
           <Button
             onClick={onSkip}
             variant="outline"
-            className="h-14 gap-2 border-border text-base font-semibold"
+            className="h-14 gap-2 border-border text-sm font-heading tracking-wide transition-all duration-300"
           >
             <SkipForward className="h-5 w-5" />
             SKIP
@@ -146,14 +146,14 @@ export default function OperatorMode({
           <Button
             onClick={onEnd}
             variant="outline"
-            className="h-14 gap-2 border-dead/30 text-dead hover:bg-dead/10 text-base font-semibold"
+            className="h-14 gap-2 border-dead/30 text-dead hover:bg-dead/8 text-sm font-heading tracking-wide transition-all duration-300"
           >
             <XCircle className="h-5 w-5" />
             END
           </Button>
         </div>
 
-        <p className="mt-3 text-center text-xs text-muted-foreground">
+        <p className="mt-4 text-center text-xs text-muted-foreground font-body">
           Customer {processed + 1} of {total}
         </p>
       </div>
